@@ -40,4 +40,7 @@ Route::get('barang/{kode}', [NamaController::class, 'show']);
 Route::resource('daftar', BarangController::class);
 
 //route user
-Route::resource('user', userController::class);
+Route::resource('user', userController::class)->except('destroy')->middleware('auth');
+Route::delete('user/{id}', [userController::class, 'destroy'])->middleware('auth');
+Route::get('user/{id}/password', [userController::class, 'editPassword']);
+Route::put('user/{id}/password', [userController::class, 'updatePassword']);

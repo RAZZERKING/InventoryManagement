@@ -63,7 +63,7 @@
                                     <div class="col-lg-12">
                                         <div class="floating-label form-group">
                                             <input
-                                                class="floating-input form-control @error('username') is-invalid @enderror"
+                                                class="floating-input border-primary form-control @error('username') is-invalid @enderror"
                                                 type="text" placeholder=" " name="username"
                                                 value="{{ old('username') }}">
                                             <label for="username">Username</label>
@@ -77,7 +77,7 @@
                                     <div class="col-lg-12">
                                         <div class="floating-label form-group">
                                             <input
-                                                class="floating-input form-control @error('password') is-invalid @enderror"
+                                                class="floating-input border-primary form-control @error('password') is-invalid @enderror"
                                                 type="password" name="password" placeholder=" ">
                                             <label for="password">Password</label>
                                             @error('password')

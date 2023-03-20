@@ -61,7 +61,7 @@
             </div>
             <div class="col-lg-12">
                 <div class="table-responsive-lg rounded mb-3">
-                    <table class="table data-tables table-striped rounded text-center">
+                    <table class="table data-tables table-striped shadow rounded text-center">
                         <thead class="bg-white text-uppercase">
                             <tr class="ligth ligth-data">
                                 <th class="align-middle" rowspan="2">Barang</th>
@@ -77,8 +77,8 @@
                                 <th class="table-secondary ">Rusak</th>
                             </tr>
                         </thead>
-                        @foreach ($nama as $jeniss)
-                            <tbody class="ligth-body">
+                        <tbody class="ligth-body">
+                            @foreach ($nama as $jeniss)
                                 <tr>
                                     <td>
                                         <div>
@@ -155,7 +155,7 @@
                                         </div>
                                     </td>
                                 </tr>
-                        @endforeach
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

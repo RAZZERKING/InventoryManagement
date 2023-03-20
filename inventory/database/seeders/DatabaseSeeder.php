@@ -32,13 +32,17 @@ class DatabaseSeeder extends Seeder
 
         //user
         User::create([
-            'username' => 'mithrandir',
+            'id' => fake()->unique()->numerify('user-####'),
+            'nama' => 'Oloren',
+            'username' => 'Mithrandir',
             'password' => bcrypt('1234'),
             'phone' => fake()->phoneNumber(),
             'role' => 'High Admin',
             'gender' => 'Laki-Laki',
         ]);
         User::create([
+            'id' => fake()->unique()->numerify('user-####'),
+            'nama' => 'orang',
             'username' => 'orang',
             'password' => bcrypt('1234'),
             'phone' => fake()->phoneNumber(),

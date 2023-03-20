@@ -20,9 +20,16 @@
                     <form action="/user" method="POST">
                         @csrf
                         <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="nama">Nama : </label>
+                                    <input type="text" name="nama" id="" class="form-control"
+                                        placeholder="Silahkan isi nama lengkap">
+                                </div>
+                            </div>
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="">Username :</label>
+                                    <label for="username">Username :</label>
                                     <input type="text" name="username" placeholder="silahkan isi username" id=""
                                         class="form-control">
                                 </div>
@@ -51,7 +58,7 @@
                                         <div class="custom-control custom-radio custom-control-inline ml-5">
                                             <input type="radio" id="lain" name="gender"
                                                 class="custom-control-input ml-5" value="Lain-lain">
-                                            <label class="custom-control-label ml-5" for="lain"> Laki-laki </label>
+                                            <label class="custom-control-label ml-5" for="lain"> Lain-lain </label>
                                         </div>
                                     </div>
                                 </div>

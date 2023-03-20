@@ -253,7 +253,7 @@
                                         </a>
                                     </li>
                                     <li class="">
-                                        <a href="../backend/page-add-customers.html">
+                                        <a href="/user">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21"
                                                 fill="currentColor" class="bi bi-file-earmark-person-fill"
                                                 viewBox="0 0 16 16">
@@ -263,7 +263,7 @@
                                         </a>
                                     </li>
                                     <li class="">
-                                        <a href="/adduser">
+                                        <a href="/user/create">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21"
                                                 fill="currentColor" class="bi bi-person-fill-add" viewBox="0 0 16 16">
                                                 <path
@@ -585,7 +585,7 @@
                 </div>
             </div>
         </div>
-        <div class="content-page">
+        <div class="content-page bg-light">
             @yield('component')
         </div>
     </div>

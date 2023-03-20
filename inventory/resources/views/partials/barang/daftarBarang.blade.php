@@ -53,7 +53,7 @@
             </ol>
         </nav>
         <div class="row">
-            <div class="card p-2 pt-4 col-lg-12">
+            <div class="card shadow p-2 pt-4 col-lg-12">
                 <h1 class="card-title ml-4">
                     Daftar Barang @isset($nama)
                         {{ $nama->nama_barang }}
@@ -101,7 +101,7 @@
                         </form>
                     @endunless
                     <div class="table-responsive-lg rounded mb-3">
-                        <table id="datatable" class="table table-striped data-table text-center">
+                        <table id="datatable" class="table table-striped text-center">
                             <thead class="bg-white text-uppercase">
                                 <tr class="ligth ligth-data">
                                     <th>No Barang</th>

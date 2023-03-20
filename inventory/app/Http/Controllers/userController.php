@@ -15,7 +15,10 @@ class userController extends Controller
      */
     public function index()
     {
-        //
+        return view('partials.user.daftarUser', [
+            'title' => 'List User',
+            'user' => User::all(),
+        ]);
     }
 
     /**
@@ -25,7 +28,7 @@ class userController extends Controller
      */
     public function create()
     {
-        return view('partials.user.addUser', [
+        return view('partials.user.formUser', [
             'title' => 'Add User',
         ]);
     }
@@ -39,6 +42,7 @@ class userController extends Controller
     public function store(Request $request)
     {
         $req = $request->validate([
+            'nama' => 'required',
             'username' => 'required',
             'password' => 'required',
             'role' => 'required',
@@ -46,16 +50,11 @@ class userController extends Controller
             'gender' => 'required',
         ]);
         $req['password'] = bcrypt($request['password']);
-        // return dd(User::all());
+        $req['id'] = fake()->unique()->numerify('User-#####');
+        // return dd($req);
         try {
-            User::create([
-                'username' => $req['username'],
-                'password' => $req['password'],
-                'phone' => $req['phone'],
-                'role' => $req['role'],
-                'gender' => $req['gender']
-            ]);
-            return dd('berhasil');
+            User::create($req);
+            return redirect('/user')->with('success', 'User Berhasil Ditambahkan');
         } catch (QueryException $ex) {
             return dd($ex->getMessage());
         }
@@ -80,7 +79,11 @@ class userController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('partials.user.editUser', [
+            'method' => 'edit',
+            'title' => 'edit User',
+            'user' => User::find($id),
+        ]);
     }
 
     /**
@@ -92,7 +95,31 @@ class userController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $req = $request->validate([
+            'nama' => 'required',
+            'username' => 'required',
+            'gender' => 'required',
+            'phone' => 'required',
+            'role' => 'required',
+        ]);
+        try {
+            User::where('id', $id)->update($req);
+            return redirect('/user')->with('success', 'Data User berhasil diubah');
+        } catch (QueryException $ex) {
+            return redirect('/user')->with('error', $ex->getMessage());
+        }
+    }
+
+    public function editPassword($id)
+    {
+        return view('partials.user.editPassword', [
+            'title' => 'Change Password',
+            'id' => $id,
+        ]);
+    }
+
+    public function updatePassword(Request $request, $id)
+    {
     }
 
     /**
@@ -103,6 +130,12 @@ class userController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            User::destroy($id);
+            // return dd($id);
+            return redirect('/user')->with('success', 'User Berhasil Dihapus!!');
+        } catch (QueryException $ex) {
+            return redirect('/user')->with($ex->getMessage());
+        }
     }
 }
