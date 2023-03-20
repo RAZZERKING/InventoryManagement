@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Error;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class userController extends Controller
 {
@@ -120,6 +122,25 @@ class userController extends Controller
 
     public function updatePassword(Request $request, $id)
     {
+        $user = User::find($id);
+        $request->validate([
+            'oldPassword' => 'required',
+            'newPassword' => 'required|same:password',
+            'password' => 'required|same:newPassword'
+        ]);
+        // dd(Hash::check($request['oldPassword'], $user->password));
+        if (Hash::check($request['oldPassword'], $user->password)) {
+            $req['password'] = bcrypt($request['password']);
+            // dd($req);
+            try {
+                $user->update($req);
+                return redirect('/user')->with('success', 'password ' . $user->username . ' berhasil diubah');
+            } catch (QueryException $ex) {
+                return redirect('/user')->with('error', $ex->getMessage());
+            }
+        } else {
+            //
+        }
     }
 
     /**

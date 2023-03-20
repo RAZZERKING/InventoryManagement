@@ -18,7 +18,7 @@
                 </div>
                 <div class="card-body">
                     <form action="/user/{{ $user->id }}" method="POST">
-                        @method('PATCH')
+                        @method('PUT')
                         @csrf
                         <div class="row">
                             <div class="col-12">
